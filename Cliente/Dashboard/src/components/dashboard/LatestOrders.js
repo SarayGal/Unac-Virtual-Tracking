@@ -86,7 +86,7 @@ const orders = [
 
 const LatestOrders = (props) => (
   <Card {...props}>
-    <CardHeader title="Latest Orders" />
+    <CardHeader title="Entregables" />
     <Divider />
     <PerfectScrollbar>
       <Box sx={{ minWidth: 800 }}>
