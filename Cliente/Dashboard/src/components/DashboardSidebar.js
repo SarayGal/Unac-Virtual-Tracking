@@ -44,12 +44,12 @@ const items = [
   {
     href: '/app/account',
     icon: UserIcon,
-    title: 'Account'
+    title: 'Perfil'
   },
   {
     href: '/app/settings',
     icon: SettingsIcon,
-    title: 'Settings'
+    title: 'Configuraciones'
   }
 ];
 
