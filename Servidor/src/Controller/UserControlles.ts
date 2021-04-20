@@ -9,7 +9,7 @@ export class UserController {
     let users;
 
     try {
-      users = await userRepository.find({ select: ['id', 'username', 'role'] });
+      users = await userRepository.find({ select: ['id', 'name', 'role'] });
     } catch (e) {
       res.status(404).json({ message: 'Somenthing goes wrong!' });
     }
@@ -33,10 +33,10 @@ export class UserController {
   };
 
   static new = async (req: Request, res: Response) => {
-    const { username, password, role } = req.body;
+    const {name, password, role } = req.body;
     const user = new Users();
 
-    user.username = username;
+    user.name = name;
     user.password = password;
     user.role = role;
 
@@ -63,13 +63,13 @@ export class UserController {
   static edit = async (req: Request, res: Response) => {
     let user;
     const { id } = req.params;
-    const { username, role } = req.body;
+    const { name, role } = req.body;
 
     const userRepository = getRepository(Users);
     // Try get user
     try {
       user = await userRepository.findOneOrFail(id);
-      user.username = username;
+      user.name = name;
       user.role = role;
     } catch (e) {
       return res.status(404).json({ message: 'User not found' });
