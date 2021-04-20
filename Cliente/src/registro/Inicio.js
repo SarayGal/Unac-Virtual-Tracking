@@ -29,6 +29,11 @@ function registroinicio() {
                                     <input class="input100" type="text" name="celular" placeholder="Número de celular" id="celular" required="true"></input>
                                         <span class="focus-input100"></span>
                                 </div>
+                                <div class="wrap-input100 validate-input" data-validate="La contraseña es obligatoria">
+                                    <span class="label-input100" for="contraseña">Escribe tu contraseña</span>
+                                    <input class="input100" type="text" name="contraseña" placeholder="Escribe tu contraseña" id="contraseña" required="true"></input>
+                                        <span class="focus-input100"></span>
+                                </div>
                                 <div class="wrap-input100 input100-select">
                                                 <span class="label-input100">Elige tu documento de identidad</span>
                                                 <div>
