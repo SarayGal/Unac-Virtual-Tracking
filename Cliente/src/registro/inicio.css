@@ -208,14 +208,20 @@ iframe {
     justify-content: flex-end;
     align-items: center;
     padding: 15px;
-    background-image: url('./images/bg-1.jpg');
+    background-image: url('./images/bg-1.gif');
     background-repeat: no-repeat;
     background-position: center;
     object-fit: contain;
+    
+}
+
+.container-contact100 .img{
+    width: 1px;
+    height: 1px;
 }
 
 .wrap-contact100 {
-    width: 600px;
+    width: 617px;
     background: rgba(255, 255, 255, 0.932);
     border-radius: 10px;
     overflow: hidden;
@@ -360,12 +366,7 @@ textarea.input100 {
     z-index: -1;
     width: 300%;
     height: 100%;
-    background: #2588bd;
-    /*background: #a64bf4;
-    background: -webkit-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
-    background: -o-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
-    background: -moz-linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);
-    background: linear-gradient(left, #00dbde, #fc00ff, #00dbde, #fc00ff);*/
+    background: #2b5784;
     top: 0;
     left: -100%;
     -webkit-transition: all 0.4s;
@@ -433,7 +434,7 @@ textarea.input100 {
         justify-content: flex-end;
         align-items: center;
         padding: 15px;
-        background-image: url('./images/bg.png') !important;
+        background-image: url('./images/bg-1.gif') !important;
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
@@ -453,7 +454,7 @@ textarea.input100 {
         justify-content: flex-end;
         align-items: center;
         padding: 15px;
-        background-image: url('./images/bg-1024.png') !important;
+        background-image: url('./images/bg-1.gif') !important;
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
@@ -473,7 +474,7 @@ textarea.input100 {
         justify-content: flex-end;
         align-items: center;
         padding: 15px;
-        background-image: url('./images/bg-1.jpg');
+        background-image: url('./images/bg-1.gif');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
