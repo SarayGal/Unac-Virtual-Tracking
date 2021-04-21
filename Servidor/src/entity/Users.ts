@@ -14,7 +14,7 @@ export class Users {
   name: string;
 
   @Column()
-  @MinLength(40)
+  @MinLength(5)
   @IsEmail()
   @IsNotEmpty()
   email: string;
@@ -54,7 +54,7 @@ export class Users {
   cod_student: string;
 
   @Column()
-  @MinLength(6)
+  @MinLength(4)
   @IsNotEmpty()
   semester: string;
 

@@ -7,8 +7,7 @@ import routes from './routes/app';
 
 const PORT = process.env.PORT || 3000;
 
-createConnection()
-  .then(async () => {
+createConnection().then(async () => {
     // create express app
     const app = express();
     // Middlewares
@@ -21,5 +20,5 @@ createConnection()
 
     // start express server
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-  })
-  .catch(error => console.log(error));
+    
+  }).catch((error)=> console.log('error de conexion'));;

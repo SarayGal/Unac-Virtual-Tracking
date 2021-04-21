@@ -6,15 +6,15 @@ import { Users } from '../entity/Users';
 import * as jwt from 'jsonwebtoken';
 import config from '../config/config';
 import { validate } from 'class-validator';
-
+import {transporter} from '../config/mailer'
 
 
 class AuthController {
 
     static login = async (req: Request, res: Response) => {
-        const { username, password } = req.body;
+        const { email, password } = req.body;
     
-        if (!(username && password)) {
+        if (!(email && password)) {
           return res.status(400).json({ message: ' Username & Password are required!' });
         }
     
@@ -22,17 +22,17 @@ class AuthController {
         let user: Users;
     
         try {
-          user = await userRepository.findOneOrFail({ where: { username } });
+          user = await userRepository.findOneOrFail({ where: { email } });
         } catch (e) {
-          return res.status(400).json({ message: ' Username or password incorecct!' });
+          return res.status(400).json({ message: ' email or password incorecct!' });
         }
     
         // Check password
         if (!user.checkPassword(password)) {
-          return res.status(400).json({ message: 'Username or Password are incorrect!' });
+          return res.status(400).json({ message: 'email or Password are incorrect!' });
         }
     
-        const token = jwt.sign({ userId: user.id, username: user.username }, config.jwtSecret, { expiresIn: '1h' });
+        const token = jwt.sign({ userId: user.id, email: user.email }, config.jwtSecret, { expiresIn: '1h' });
     
         res.json({ message: 'OK', token, userId: user.id, role: user.role });
       };
@@ -79,8 +79,8 @@ class AuthController {
     
 
   static forgotPassword = async (req: Request, res: Response) => {
-    const { username } = req.body;
-    if(!(username)){
+    const { email } = req.body;
+    if(!(email)){
         return res.status(400).json({message: 'Username is required!'});
     }
     const message = 'Check your email for a link to reset your password.';
@@ -90,8 +90,8 @@ class AuthController {
     const userRepository= getRepository(Users);
     let user: Users;
     try{
-        user = await userRepository.findOneOrFail({where:{username: username}});
-        const token = jwt.sign({userId: user.id, username: user.username}, config.jwtSecretReset, {expiresIn:'10m'});
+        user = await userRepository.findOneOrFail({where:{email: email}});
+        const token = jwt.sign({userId: user.id, email: user.email}, config.jwtSecretReset, {expiresIn:'10m'});
         
         verificationLink= `http://localhost:3000/auth/new-password/${token}`;
         user.resetToken = token;
@@ -102,10 +102,19 @@ class AuthController {
     }
    // envia de email
     try {
-        //
+      
+      let info = await transporter.sendMail({
+    from: '"Forgot password👻" <ar.test.paredes@gmail.com>', // sender address
+    to: user.email ,
+    subject: "Forgot password ✔ ", // Subject line
+    html: `b>Please click on the following link, or paste this into your browser to complete process: </b>
+    <a href="${verificationLink}">${verificationLink}</a>`, // html body
+  });
+  console.log("Message sent: %s", info.messageId);
+
     } catch (error) {
         emailStatus=error;
-        return res.json({message});
+        return res.status(400).json({message :'Something'});
     }
 
     try {
