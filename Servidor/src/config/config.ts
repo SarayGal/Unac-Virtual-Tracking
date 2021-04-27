@@ -1,6 +1,6 @@
 export default {
   
-  jwtSecret: 'BDPEK@',
+  jwtSecret: 'BDPE@',
   jwtSecretReset:'BDPEK@123'
 
 };

@@ -21,4 +21,4 @@ createConnection().then(async () => {
     // start express server
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     
-  }).catch((error)=> console.log('error de conexion'));;
+  }).catch((error)=> console.log('error de conexion '));
