@@ -73,20 +73,20 @@ export class UserController {
   static edit = async (req: Request, res: Response) => {
     let user;
     const { id } = req.params;
-    const { name, role } = req.body;
+    const { email} = req.body;
 
     const userRepository = getRepository(Users);
     // Try get user
     try {
       user = await userRepository.findOneOrFail(id);
-      user.name = name;
-      user.role = role;
+      user.email = email;
+      
     } catch (e) {
       return res.status(404).json({ message: 'User not found' });
     }
     const validationOpt = { validationError: { target: false, value: false } };
     const errors = await validate(user, validationOpt);
-
+    console.log('ERR ->', errors);
     if (errors.length > 0) {
       return res.status(400).json(errors);
     }

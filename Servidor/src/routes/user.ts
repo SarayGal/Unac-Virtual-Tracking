@@ -6,7 +6,7 @@ import { Router } from 'express';
 const router = Router();
 
 // Get all users
-router.get('/all-user', UserController.getAll);
+router.get('/all-user', [checkJwt, checkRole(['admin'])], UserController.getAll);
 
 // Get one user
 router.get('/:id', [checkJwt, checkRole(['admin'])], UserController.getById);

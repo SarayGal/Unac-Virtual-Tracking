@@ -60,7 +60,7 @@ export class Users {
 
   @Column()
   @IsOptional()
-  @IsNotEmpty()
+ // @IsNotEmpty()
   resetToken: string;
 
 

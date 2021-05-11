@@ -33,6 +33,7 @@ class AuthController {
         }
     
         const token = jwt.sign({ userId: user.id, email: user.email }, config.jwtSecret, { expiresIn: '1h' });
+ 
     
         res.json({ message: 'OK', token, userId: user.id, role: user.role });
       };
@@ -93,7 +94,7 @@ class AuthController {
         user = await userRepository.findOneOrFail({where:{email: email}});
         const token = jwt.sign({userId: user.id, email: user.email}, config.jwtSecretReset, {expiresIn:'10m'});
         
-        verificationLink= `http://localhost:3000/auth/new-password/${token}`;
+        verificationLink= `https://app-unac-virtual-tracking.herokuapp.com/auth/new-password/${token}`;
         user.resetToken = token;
         
          
