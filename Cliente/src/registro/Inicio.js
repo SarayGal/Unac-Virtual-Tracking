@@ -10,13 +10,13 @@ export default function Registro(){
             name: "", 
             password: "", 
             email: "",
-            cellphone: "",
+            phone: "",
             type_id: "",
             documento: "",
             role: "",
-            genre: "",
+            gender: "",
             codigo: "",
-            grade: "",
+            semester: "",
         }, 
     }); 
 
@@ -32,7 +32,7 @@ export default function Registro(){
     const [setShowError] = useState (false); 
     const requestAuth = async (event) => {
         event.preventDefault();
-        return fetch ("https://app-unac-virtual-tracking.herokuapp.com/auth/registro" , { 
+        return fetch ("https://app-unac-virtual-tracking.herokuapp.com/users/new-user" , { 
             method: "POST", 
             headers: {
                 "Content-Type": "application/json",
@@ -40,20 +40,20 @@ export default function Registro(){
             body: JSON.stringify({
                 name: state.form.name,
                 password: state.form.password,
-                cellphone: state.form.cellphone,
+                phone: state.form.phone,
                 email: state.form.email,
                 type_id: state.form.type_id,
                 num_id: state.form.num_id,
                 role: state.form.role,
-                genre: state.form.genre,
+                gender: state.form.gender,
                 cod_student: state.form.cod_student,
-                grade: state.form.grade,
+                semester: state.form.semester,
             }), 
         })
         .then((data) => {
             console.log(data);
             if (data.ok) {
-                window.location.assign("https://app-unac-virtual-tracking.herokuapp.com/auth/dashboard");
+                window.location.assign("https://app-unac-virtual-tracking.herokuapp.com/auth/login");
             } else {
                 setShowError(true);
                 setTimeout(() => {
@@ -87,8 +87,8 @@ export default function Registro(){
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 validate-input" data-validate="Tú número de celular es requerido">
-                            <span class="label-input100" for="cellphone">Celular</span>
-                            <input class="input100" type="text" name="cellphone" placeholder="Celular " id="cellphone" required="true" onChange={handleChange}></input>
+                            <span class="label-input100" for="phone">Celular</span>
+                            <input class="input100" type="text" name="phone" placeholder="Celular " id="phone" required="true" onChange={handleChange}></input>
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 validate-input" data-validate="La contraseña es obligatoria">
@@ -135,7 +135,7 @@ export default function Registro(){
                         <div class="wrap-input100 input100-select">
                             <span class="label-input100">Género</span>
                             <div>
-                                <select class="selection-2" name="genre" id="genre" onChange={handleChange}>
+                                <select class="selection-2" name="gender" id="gender" onChange={handleChange}>
                                     <option disabled selected>Selecciona tu género</option>
                                     <option value="Femenino">Femenino</option>
                                     <option value="Masculino">Masculino</option>
@@ -151,16 +151,20 @@ export default function Registro(){
                             <span class="focus-input100"></span>
                         </div>
                         <div class="wrap-input100 input100-select">
-                            <span class="label-input100">Elige tu grado</span>
+                            <span class="label-input100">Selecciona tu semestre</span>
                             <div>
-                                <select class="selection-2" name="grade" id="grade" required="true" data-validate="El grado es requerido" onChange={handleChange}>
-                                    <option disabled selected>Selecciona tu grado</option>
-                                    <option value="6º">6º</option>
-                                    <option value="7º">7º</option>
-                                    <option value="8º">8º</option>
-                                    <option value="9º">9º</option>
-                                    <option value="10º">10º</option>
-                                    <option value="11º">11º</option>
+                                <select class="selection-2" name="semester" id="semester" required="true" data-validate="El semestre es requerido" onChange={handleChange}>
+                                    <option disabled selected>Selecciona tu semestre</option>
+                                    <option value="Primero">1º</option>
+                                    <option value="Segundo">2º</option>
+                                    <option value="Tercero">3º</option>
+                                    <option value="Cuarto">4º</option>
+                                    <option value="Quinto">5º</option>
+                                    <option value="Sexto">6º</option>
+                                    <option value="Séptimo">7º</option>
+                                    <option value="Octavo">8º</option>
+                                    <option value="Noveno">9º</option>
+                                    <option value="Décimo">10º</option>
                                 </select>
                             </div>
                             <span class="focus-input100"></span>
