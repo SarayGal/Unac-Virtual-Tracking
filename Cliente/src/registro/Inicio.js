@@ -173,7 +173,7 @@ export default function Registro(){
                             <div class="wrap-contact100-form-btn">
                                 <div class="contact100-form-bgbtn"></div>
                                 <button class="contact100-form-btn" 
-                                href="https://app-unac-virtual-tracking.herokuapp.com/auth/dashboard" 
+                                href="https://app-unac-virtual-tracking.herokuapp.com/auth/login" 
                                 type="submit" 
                                 onClick={requestAuth}>
                                 Enviar
