@@ -1,8 +1,7 @@
 import './inicio.css';
 import './util.css';
-import logo from './images/logo.png';
 import React, {useState } from "react"; 
-
+import Login from '../login/login.js';
 
 export default function Registro(){
     const [state, setState] = useState({
@@ -53,7 +52,7 @@ export default function Registro(){
         .then((data) => {
             console.log(data);
             if (data.ok) {
-                window.location.assign("https://app-unac-virtual-tracking.herokuapp.com/auth/login");
+                window.location.assign('login');
             } else {
                 setShowError(true);
                 setTimeout(() => {
@@ -71,10 +70,6 @@ export default function Registro(){
             <div class="container-contact100">
                 <div class="wrap-contact100">
                     <form class="contact100-form validate-form position-absolute">
-                        <span class="contact100-form-title">
-                        <img src={logo} />
-                        </span>
-
                         <div class="wrap-input100 validate-input" data-validate="Tu nombre es requerido">
                             <span class="label-input100" for="name">Tu nombre completo</span>
                             <input class="input100" type="text" name="name" placeholder="Nombre Completo" id="name" required="true" onChange={handleChange}></input>
@@ -109,13 +104,6 @@ export default function Registro(){
                             </div>
                             <span class="focus-input100"></span>
                         </div>
-                    </form>
-                </div>
-                
-                <div class="wrap-contact100">
-                    <form class="contact100-form validate-form position-absolute">
-                        <span class="contact100-form-title">
-                        </span>
                         <div class="wrap-input100 validate-input" data-validate="Tú número de documento es requerido">
                             <span class="label-input100" for="num_id">Documento de Identidad</span>
                             <input class="input100" type="text" name="num_id" placeholder="Documento" id="num_id" required="true" onChange={handleChange}></input>
@@ -132,17 +120,13 @@ export default function Registro(){
                             </div>
                             <span class="focus-input100"></span>
                         </div>
-                        <div class="wrap-input100 input100-select">
-                            <span class="label-input100">Género</span>
-                            <div>
-                                <select class="selection-2" name="gender" id="gender" onChange={handleChange}>
+                        <div>
+                            <select class="selection-2" name="gender" id="gender" onChange={handleChange}>
                                     <option disabled selected>Selecciona tu género</option>
                                     <option value="Femenino">Femenino</option>
                                     <option value="Masculino">Masculino</option>
                                     <option value="Otro">Otro</option>
-                                </select>
-                            </div>
-                            <span class="focus-input100"></span>
+                            </select>
                         </div>
                         <h6>Los siguientes campos solo son para estudiantes</h6>
                         <div class="wrap-input100 validate-input" data-validate="Son solo números">
@@ -173,7 +157,6 @@ export default function Registro(){
                             <div class="wrap-contact100-form-btn">
                                 <div class="contact100-form-bgbtn"></div>
                                 <button class="contact100-form-btn" 
-                                href="https://app-unac-virtual-tracking.herokuapp.com/auth/login" 
                                 type="submit" 
                                 onClick={requestAuth}>
                                 Enviar

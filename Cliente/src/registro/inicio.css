@@ -345,7 +345,7 @@ textarea.input100 {
     display: -webkit-flex;
     display: -moz-box;
     display: -ms-flexbox;
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 13px;
